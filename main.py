@@ -12,7 +12,7 @@ try:
         int(pokemon_name) # Handles the case where ID is inputted since we only need name input
         print("\033[91mPokemon not found\033[0m")
         exit()
-    except ValueError:
+    except ValueError: # Only passes when the pokemon name is inputted 
         pass
 
     api_url = f"https://pokeapi.co/api/v2/pokemon/{pokemon_name}/"
@@ -70,6 +70,6 @@ try:
             f.write(sprite_data.content)
         print("\033[32mImage downloaded\033[0m")
 
-except requests.exceptions.RequestException as e:
+except requests.exceptions.HTTPError as e:
     print("\033[91mPokemon not found\033[0m")
     exit()
